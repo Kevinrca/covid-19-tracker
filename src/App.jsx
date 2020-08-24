@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { MenuItem, FormControl, Select } from "@material-ui/core";
 import './App.css';
 import InfoBox from "./InfoBox";
+import Map from "./Map.jsx"
 
 
 
@@ -44,38 +45,47 @@ function App() {
 
   return (
     <div className="App">
+      <div className="app__left">
+        
+        <div className="app__header">
+          <h1>COVID-19 Tracker</h1>
 
-      <div className="app__header">
-        <h1>COVID-19 Tracker</h1>
-
-        <FormControl className="app__dropdown">
-          <Select variant="outlined" value={country} onChange={onCountryChange}>
-            
-            <MenuItem value="Worldwide">Worldwide</MenuItem>
-            {countries.map(country => (
+          <FormControl className="app__dropdown">
+            <Select variant="outlined" value={country} onChange={onCountryChange}>
+              
+              <MenuItem value="Worldwide">Worldwide</MenuItem>
+              {countries.map(country => (
               <MenuItem value={country.value}>{country.name}</MenuItem>
-            ))}
+              ))}
 
-          </Select>
-        </FormControl>
+              </Select>
+          </FormControl>
+        </div>
+
+        <div className="app__stats">
+          <InfoBox 
+            title="Cases"
+            cases="4321082"
+            total="Total: 5000000">
+          </InfoBox>
+
+          <InfoBox 
+            title="Recoverded"
+            cases="4321082"
+            total="Total: 5000000">
+          </InfoBox>
+            
+          <InfoBox 
+            title="Deaths"
+            cases="4321082"
+            total="Total: 5000000">
+          </InfoBox>
+        </div>
+
+        <Map />
       </div>
 
-      <div className="app__stats">
-        <InfoBox 
-          title="Cases"
-          cases="4321082"
-          total="5000000"></InfoBox>
-
-        <InfoBox 
-          title="Recoverded"
-          cases="4321082"
-          total="5000000"></InfoBox>
-          
-        <InfoBox 
-          title="Deaths"
-          cases="4321082"
-          total="5000000"></InfoBox>
-      </div>
+      
       
     </div>
   );

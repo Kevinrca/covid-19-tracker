@@ -3,7 +3,19 @@
   margin: 0;
 }
 
+body {
+  background-color: rgb(247, 247, 247);
+}
+
 .app__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 30px;
+}
+
+.app__stats {
   display: flex;
   justify-content: space-between;
   align-items: center;
