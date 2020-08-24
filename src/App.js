@@ -8,7 +8,8 @@ function App() {
 
   // Variables
   const [countries, setCountries] = useState([]);
-  
+  const [country, setCountry] = useState("Worldwide");
+
 
   // API call to get the countries
   useEffect(() => {
@@ -27,10 +28,15 @@ function App() {
           setCountries(countries);
         })
     }
-
     getCountriesData();
   }, []);
-  
+
+
+  // handle the change the country when clicking on the dropdown menu
+  async function onCountryChange(event) {
+    const countryCode = event.target.value;
+    setCountry(countryCode);
+  }
 
 
   return (
@@ -39,8 +45,9 @@ function App() {
         <h1>COVID-19 Tracker</h1>
 
         <FormControl className="app__dropdown">
-          <Select variant="outlined" value="abc">
+          <Select variant="outlined" value={country} onChange={onCountryChange}>
             
+            <MenuItem value="Worldwide">Worldwide</MenuItem>
             {countries.map(country => (
               <MenuItem value={country.value}>{country.name}</MenuItem>
             ))}
