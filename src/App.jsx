@@ -8,6 +8,27 @@ import Table from './Table.jsx'
 
 
 
+function sortData(data) {
+  const sortedData = [...data];
+
+  sortedData.sort((a, b) => {
+      if(a.cases > b.cases) {
+          return -1;
+      }
+      else {
+          return 1;
+      }
+  })
+
+  return sortedData;
+}
+
+
+
+
+
+
+
 function App() {
 
   // Variables
@@ -41,7 +62,8 @@ function App() {
             }
           ));
 
-          setTableData(data);
+          const sortedData = sortData(data);
+          setTableData(sortedData);
           setCountries(countries);
         })
     }
