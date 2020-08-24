@@ -8,6 +8,7 @@ import Table from './Table.jsx'
 
 
 
+// Sorting the data in decreasing mode
 function sortData(data) {
   const sortedData = [...data];
 
@@ -27,8 +28,6 @@ function sortData(data) {
 
 
 
-
-
 function App() {
 
   // Variables
@@ -39,6 +38,9 @@ function App() {
 
 
 
+
+
+  // Dipslay the wordwide infos at loading
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/all")
       .then(response => response.json())
@@ -46,7 +48,6 @@ function App() {
         setCountryInfo(data);
       })
   }, []);
-
 
   // API call to get the countries
   useEffect(() => {
@@ -71,6 +72,8 @@ function App() {
   }, []);
 
 
+
+
   
 
   // handle the change the country when clicking on the dropdown menu
@@ -93,9 +96,9 @@ function App() {
       })
   }
 
-  console.log(countryInfo);
 
 
+  
 
   return (
     <div className="App">
