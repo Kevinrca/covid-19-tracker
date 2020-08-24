@@ -98,7 +98,7 @@ function App() {
 
 
 
-  
+
 
   return (
     <div className="App">
@@ -141,6 +141,8 @@ function App() {
 
         <Map />
       </div>
+
+
 
       <Card className="app__right">
         <CardContent>

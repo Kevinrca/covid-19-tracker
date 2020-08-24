@@ -4,6 +4,7 @@
     overflow: scroll;
     overflow-x: hidden;
     height: 400px;
+    color: rgb(71, 71, 71);
 }
 
 .table tr {
