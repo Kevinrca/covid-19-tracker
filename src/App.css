@@ -7,6 +7,13 @@ body {
   background-color: rgb(247, 247, 247);
 }
 
+
+.App {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+
 .app__header {
   display: flex;
   justify-content: space-between;
@@ -18,5 +25,14 @@ body {
 .app__stats {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+}
+
+
+
+
+
+@media (max-width: 900px) {
+  .App {
+    flex-direction: column;
+  }
 }

@@ -1,24 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import { MenuItem, FormControl, Select } from "@material-ui/core";
+import { MenuItem, FormControl, Select, CardContent, Card } from "@material-ui/core";
 import './App.css';
+
 import InfoBox from "./InfoBox";
 import Map from "./Map.jsx"
+import Table from './Table.jsx'
 
 
 
 function App() {
 
-  const apiURL = "https://disease.sh/v3/covid-19/countries";
-
   // Variables
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState("Worldwide");
+  const [countryInfo, setCountryInfo] = useState({});
+  const [tableData, setTableData] = useState([]);
+
+
+
+  useEffect(() => {
+    fetch("https://disease.sh/v3/covid-19/all")
+      .then(response => response.json())
+      .then(data => {
+        setCountryInfo(data);
+      })
+  }, []);
 
 
   // API call to get the countries
   useEffect(() => {
     async function getCountriesData() {
-      await fetch(apiURL)
+      await fetch("https://disease.sh/v3/covid-19/countries")
         .then(response => response.json())
         .then(data => {
           // Return an object with the name and the code of the country
@@ -29,6 +41,7 @@ function App() {
             }
           ));
 
+          setTableData(data);
           setCountries(countries);
         })
     }
@@ -36,17 +49,36 @@ function App() {
   }, []);
 
 
+  
+
   // handle the change the country when clicking on the dropdown menu
   async function onCountryChange(event) {
     const countryCode = event.target.value;
-    setCountry(countryCode);
+    
+    let apiURL;
+    if(country === "Worldwide") {
+      apiURL = "https://disease.sh/v3/covid-19/all";
+    }
+    else {
+      apiURL = `https://disease.sh/v3/covid-19/countries/${countryCode}`
+    }
+
+    await fetch(apiURL)
+      .then(response => response.json())
+      .then(data => {
+        setCountry(countryCode);
+        setCountryInfo(data);
+      })
   }
+
+  console.log(countryInfo);
+
 
 
   return (
     <div className="App">
       <div className="app__left">
-        
+
         <div className="app__header">
           <h1>COVID-19 Tracker</h1>
 
@@ -65,27 +97,37 @@ function App() {
         <div className="app__stats">
           <InfoBox 
             title="Cases"
-            cases="4321082"
-            total="Total: 5000000">
+            cases={countryInfo.todayCases}
+            total={countryInfo.cases}>
           </InfoBox>
 
           <InfoBox 
             title="Recoverded"
-            cases="4321082"
-            total="Total: 5000000">
+            cases={countryInfo.todayRecovered}
+            total={countryInfo.recovered}>
           </InfoBox>
             
           <InfoBox 
             title="Deaths"
-            cases="4321082"
-            total="Total: 5000000">
+            cases={countryInfo.todayDeaths}
+            total={countryInfo.deaths}>
           </InfoBox>
         </div>
 
         <Map />
       </div>
 
-      
+      <Card className="app__right">
+        <CardContent>
+
+          <h3>Live Cases by Country</h3>
+          <Table countries={tableData}></Table>
+
+
+          <h3>Worldwide new cases</h3>
+
+        </CardContent>
+      </Card>
       
     </div>
   );
