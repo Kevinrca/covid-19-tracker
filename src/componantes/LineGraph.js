@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Line } from "react-chartjs-2";
 import numeral from "numeral";
 
+import "./LineGraph.css"
 
 
+// options for the graph
 const options = {
     legend: {
         display: false,
@@ -55,13 +57,12 @@ const options = {
 
 
 
-function LineGraph() {
+function LineGraph({ casesType = "cases" }) {
+
     const [data, setData] = useState({});
 
 
-
-
-    const buildChartData = (data, casesType = "cases") => {
+    const buildChartData = (data, casesType) => {
         const chartData = [];
         let lastDataPoint;
 
@@ -81,7 +82,6 @@ function LineGraph() {
 
 
 
-
     useEffect(() => {
         async function fetchData() {
             await fetch("https://disease.sh/v3/covid-19/historical/all?lastdays=120")
@@ -94,7 +94,7 @@ function LineGraph() {
 
         fetchData();
         
-    }, [])
+    }, [casesType])
 
 
     
@@ -102,8 +102,7 @@ function LineGraph() {
 
     
     return (
-        <div>
-
+        <div className="lineGraph">
             {data?.length > 0 && (
                 <Line 
                     data={{
