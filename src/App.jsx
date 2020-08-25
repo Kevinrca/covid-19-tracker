@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { MenuItem, FormControl, Select, CardContent, Card } from "@material-ui/core";
 import './App.css';
 
-import InfoBox from "./InfoBox";
-import Map from "./Map.jsx";
-import Table from './Table.jsx';
-import LineGraph from "./LineGraph";
+import InfoBox from "./componantes/InfoBox";
+import Map from "./componantes/Map.jsx";
+import Table from './componantes/Table.jsx';
+import LineGraph from "./componantes/LineGraph";
 
 
 
