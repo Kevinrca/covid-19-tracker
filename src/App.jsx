@@ -103,6 +103,7 @@ function App() {
 
   return (
     <div className="App">
+      
       <div className="app__left">
 
         <div className="app__header">
@@ -119,6 +120,7 @@ function App() {
               </Select>
           </FormControl>
         </div>
+
 
         <div className="app__stats">
           <InfoBox 
