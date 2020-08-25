@@ -5,12 +5,14 @@
 
 body {
   background-color: rgb(247, 247, 247);
+  overflow-x: hidden;
 }
 
 
 .App {
+  width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   padding: 20px;
 }
 
@@ -27,12 +29,27 @@ body {
   justify-content: space-between;
 }
 
-
+.app__left {
+  width: 50%;
+  margin-right: 30px;
+}
+.app__right {
+  width: 30%;
+}
 
 
 
 @media (max-width: 900px) {
   .App {
     flex-direction: column;
+  }
+  .app__left {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 30px;
+  }
+  .app__right {
+    width: 90%;
+    margin: auto;
   }
 }
