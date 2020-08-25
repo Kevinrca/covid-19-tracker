@@ -39,6 +39,7 @@ function App() {
   const [tableData, setTableData] = useState([]);
   const [mapCenter, setMapCenter] = useState({ lat: 44.434659, lng:  -1.316971 });
   const [mapZoom, setMapZoom] = useState(2);
+  const [mapCountries, setMapCountries] = useState([]);
 
 
 
@@ -70,6 +71,7 @@ function App() {
           const sortedData = sortData(data);
           setTableData(sortedData);
           setCountries(countries);
+          setMapCountries(data);
         })
     }
     getCountriesData();
@@ -97,6 +99,9 @@ function App() {
       .then(response => response.json())
       .then(data => {
         setCountryInfo(data);
+
+        setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+        setMapZoom(4);
       })
   }
 
@@ -146,6 +151,7 @@ function App() {
         </div>
 
         <Map 
+          countries={mapCountries}
           center={mapCenter}
           zoom={mapZoom}
         />
