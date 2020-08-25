@@ -3,8 +3,9 @@ import { MenuItem, FormControl, Select, CardContent, Card } from "@material-ui/c
 import './App.css';
 
 import InfoBox from "./InfoBox";
-import Map from "./Map.jsx"
-import Table from './Table.jsx'
+import Map from "./Map.jsx";
+import Table from './Table.jsx';
+import LineGraph from "./LineGraph";
 
 
 
@@ -79,13 +80,13 @@ function App() {
   // handle the change the country when clicking on the dropdown menu
   async function onCountryChange(event) {
     const countryCode = event.target.value;
-    
+
     let apiURL;
-    if(country === "Worldwide") {
-      apiURL = "https://disease.sh/v3/covid-19/all";
+    if(country !== "Worldwide") {
+      apiURL = `https://disease.sh/v3/covid-19/countries/${countryCode}`;
     }
     else {
-      apiURL = `https://disease.sh/v3/covid-19/countries/${countryCode}`
+      apiURL = "https://disease.sh/v3/covid-19/all"
     }
 
     await fetch(apiURL)
@@ -152,6 +153,7 @@ function App() {
 
 
           <h3>Worldwide new cases</h3>
+          <LineGraph />
 
         </CardContent>
       </Card>
