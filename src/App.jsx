@@ -80,19 +80,19 @@ function App() {
   // handle the change the country when clicking on the dropdown menu
   async function onCountryChange(event) {
     const countryCode = event.target.value;
-
+    setCountry(countryCode);
+    
     let apiURL;
-    if(country !== "Worldwide") {
-      apiURL = `https://disease.sh/v3/covid-19/countries/${countryCode}`;
+    if(countryCode === "Worldwide") {
+      apiURL = "https://disease.sh/v3/covid-19/all"
     }
     else {
-      apiURL = "https://disease.sh/v3/covid-19/all"
+      apiURL = `https://disease.sh/v3/covid-19/countries/${countryCode}`;
     }
 
     await fetch(apiURL)
       .then(response => response.json())
       .then(data => {
-        setCountry(countryCode);
         setCountryInfo(data);
       })
   }
