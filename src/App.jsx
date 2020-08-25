@@ -6,6 +6,7 @@ import InfoBox from "./componantes/InfoBox";
 import Map from "./componantes/Map.jsx";
 import Table from './componantes/Table.jsx';
 import LineGraph from "./componantes/LineGraph";
+import "leaflet/dist/leaflet.css";
 
 
 
@@ -36,6 +37,8 @@ function App() {
   const [country, setCountry] = useState("Worldwide");
   const [countryInfo, setCountryInfo] = useState({});
   const [tableData, setTableData] = useState([]);
+  const [mapCenter, setMapCenter] = useState({ lat: 44.434659, lng:  -1.316971 });
+  const [mapZoom, setMapZoom] = useState(2);
 
 
 
@@ -103,7 +106,7 @@ function App() {
 
   return (
     <div className="App">
-      
+
       <div className="app__left">
 
         <div className="app__header">
@@ -142,7 +145,10 @@ function App() {
           </InfoBox>
         </div>
 
-        <Map />
+        <Map 
+          center={mapCenter}
+          zoom={mapZoom}
+        />
       </div>
 
 
