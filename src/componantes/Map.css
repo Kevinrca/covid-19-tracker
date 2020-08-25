@@ -10,3 +10,34 @@
 .map .mapContainer {
     height: 100%;
 }
+
+.infoFlag {
+    height: 55px;
+    width: 85px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    margin-bottom: 5px;
+}
+.infoFlag img {
+    height: 100%;
+}
+
+.infoName {
+    margin-bottom: 3px;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.infoCases {
+    font-size: 1.1em;
+    margin-bottom: 2px;
+}
+.infoRecovered {
+    font-size: 1.1em;
+    margin-bottom: 2px;
+}
+.infoDeaths {
+    font-size: 1.1em;
+    margin-bottom: 2px;
+}

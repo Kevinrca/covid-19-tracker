@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { MenuItem, FormControl, Select, CardContent, Card } from "@material-ui/core";
+import numeral from "numeral";
 import './App.css';
 
 import InfoBox from "./componantes/InfoBox";
@@ -24,6 +25,25 @@ function sortData(data) {
   })
 
   return sortedData;
+}
+
+
+function printStat(stat) {
+  if(stat) {
+    return `+${numeral(stat).format("0.0a")}`;
+  }
+  else {
+    return "+0";
+  }
+}
+
+function printTotalStat(stat) {
+  if(stat) {
+    return `${numeral(stat).format("0.0a")}`;
+  }
+  else {
+    return "0";
+  }
 }
 
 
@@ -100,8 +120,14 @@ function App() {
       .then(data => {
         setCountryInfo(data);
 
-        setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
-        setMapZoom(4);
+        if(countryCode !== "Worldwide") {
+          setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+          setMapZoom(4);
+        }
+        else {
+          setMapCenter([44.434659, -1.316971]);
+          setMapZoom(2);
+        }
       })
   }
 
@@ -133,20 +159,20 @@ function App() {
         <div className="app__stats">
           <InfoBox 
             title="Cases"
-            cases={countryInfo.todayCases}
-            total={countryInfo.cases}>
+            cases={printStat(countryInfo.todayCases)}
+            total={printTotalStat(countryInfo.cases)}>
           </InfoBox>
 
           <InfoBox 
             title="Recoverded"
-            cases={countryInfo.todayRecovered}
-            total={countryInfo.recovered}>
+            cases={printStat(countryInfo.todayRecovered)}
+            total={printTotalStat(countryInfo.recovered)}>
           </InfoBox>
             
           <InfoBox 
             title="Deaths"
-            cases={countryInfo.todayDeaths}
-            total={countryInfo.deaths}>
+            cases={printStat(countryInfo.todayDeaths)}
+            total={printTotalStat(countryInfo.deaths)}>
           </InfoBox>
         </div>
 

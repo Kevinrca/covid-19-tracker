@@ -1,0 +1,15 @@
+.infoBox {
+    flex-grow: 1 !important;
+    width: 200px;
+}
+
+.infoBox__cases {
+    font-size: 1.5em;
+    color: rgb(233, 39, 39);
+}
+.infoBox__total {
+    color: rgb(145, 145, 145) !important;
+    font-size: 0.8em !important;
+    font-weight: 700 !important;
+    margin-top: 5px !important;
+}

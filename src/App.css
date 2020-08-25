@@ -29,6 +29,10 @@ body {
   justify-content: space-between;
 }
 
+
+
+
+
 .app__left {
   width: 50%;
   margin-right: 30px;
@@ -39,7 +43,7 @@ body {
 
 
 
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
   .App {
     flex-direction: column;
   }
