@@ -27,6 +27,7 @@ body {
 .app__stats {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 30px;
 }
 
 
@@ -35,10 +36,18 @@ body {
 
 .app__left {
   width: 50%;
+  height: 100%;
   margin-right: 30px;
 }
 .app__right {
   width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.app__graph {
+  flex-grow: 1;
 }
 
 

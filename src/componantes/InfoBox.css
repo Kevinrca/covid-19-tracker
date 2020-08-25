@@ -1,6 +1,6 @@
 .infoBox {
-    flex-grow: 1 !important;
     width: 200px;
+    height: 100%;
     cursor: pointer;
 }
 

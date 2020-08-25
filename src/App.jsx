@@ -205,6 +205,7 @@ function App() {
           <h3>Worldwide new {casesType}</h3>
           <LineGraph 
             casesType={casesType}
+            className="app__graph"
           />
 
         </CardContent>
