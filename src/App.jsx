@@ -60,6 +60,7 @@ function App() {
   const [mapCenter, setMapCenter] = useState({ lat: 44.434659, lng:  -1.316971 });
   const [mapZoom, setMapZoom] = useState(2);
   const [mapCountries, setMapCountries] = useState([]);
+  const [casesType, setCasesType] = useState("cases");
 
 
 
@@ -160,19 +161,27 @@ function App() {
           <InfoBox 
             title="Cases"
             cases={printStat(countryInfo.todayCases)}
-            total={printTotalStat(countryInfo.cases)}>
+            total={printTotalStat(countryInfo.cases)}
+            onClick={e => setCasesType("cases")}
+            active={casesType === "cases"}
+            isRed>
           </InfoBox>
 
           <InfoBox 
             title="Recoverded"
             cases={printStat(countryInfo.todayRecovered)}
-            total={printTotalStat(countryInfo.recovered)}>
+            total={printTotalStat(countryInfo.recovered)}
+            onClick={e => setCasesType("recovered")}
+            active={casesType === "recovered"}>
           </InfoBox>
             
           <InfoBox 
             title="Deaths"
             cases={printStat(countryInfo.todayDeaths)}
-            total={printTotalStat(countryInfo.deaths)}>
+            total={printTotalStat(countryInfo.deaths)}
+            onClick={e => setCasesType("deaths")}
+            active={casesType === "deaths"}
+            isRed>
           </InfoBox>
         </div>
 
@@ -180,6 +189,7 @@ function App() {
           countries={mapCountries}
           center={mapCenter}
           zoom={mapZoom}
+          casesType={casesType}
         />
       </div>
 
@@ -192,8 +202,10 @@ function App() {
           <Table countries={tableData}></Table>
 
 
-          <h3>Worldwide new cases</h3>
-          <LineGraph />
+          <h3>Worldwide new {casesType}</h3>
+          <LineGraph 
+            casesType={casesType}
+          />
 
         </CardContent>
       </Card>

@@ -1,6 +1,7 @@
 .infoBox {
     flex-grow: 1 !important;
     width: 200px;
+    cursor: pointer;
 }
 
 .infoBox__cases {
@@ -12,4 +13,16 @@
     font-size: 0.8em !important;
     font-weight: 700 !important;
     margin-top: 5px !important;
+}
+
+.infoBox--selected {
+    border-top: 10px rgb(96, 202, 35) solid;
+}
+.infoBox--red {
+    border-color: rgb(223, 34, 34);
+}
+
+
+.infoBox__cases--greed {
+    color: rgb(96, 202, 35);
 }
