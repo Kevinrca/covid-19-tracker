@@ -127,9 +127,9 @@ function App() {
   return (
     <div className="App">
 
-      <div className="app__left">
+      <div className="app__left" >
 
-        <div className="app__header">
+        <div className="app__header" >
           <h1>COVID-19 Tracker</h1>
 
           <FormControl className="app__dropdown">
@@ -145,7 +145,7 @@ function App() {
         </div>
 
 
-        <div className="app__stats">
+        <div className="app__stats" >
           <InfoBox 
             title="Cases"
             cases={printStat(countryInfo.todayCases)}
