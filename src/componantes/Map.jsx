@@ -27,13 +27,22 @@ const casesTypeColors = {
 };
 
 
+function handlePosition(lat, long) {
+    if(lat !== undefined || long !== undefined) {
+        return [lat, long];
+    }
+    else {
+        return [44.434659, -1.316971];
+    }
+}
+
 
 
 
 function showDataOnMap(data, casesType='cases') {
     return data.map(country => (
         <Circle 
-            center={[country.countryInfo.lat, country.countryInfo.long]}
+            center={handlePosition(country.countryInfo.lat, country.countryInfo.long)}
             fillOpacity={0.4}
             color={casesTypeColors[casesType].hex}
             fillColor={casesTypeColors[casesType].hex}

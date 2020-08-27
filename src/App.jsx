@@ -48,8 +48,6 @@ function printTotalStat(stat) {
 
 
 
-
-
 function App() {
 
   // Variables
@@ -61,9 +59,6 @@ function App() {
   const [mapZoom, setMapZoom] = useState(2);
   const [mapCountries, setMapCountries] = useState([]);
   const [casesType, setCasesType] = useState("cases");
-
-
-
 
 
   // Dipslay the wordwide infos at loading
@@ -99,10 +94,6 @@ function App() {
   }, []);
 
 
-
-
-  
-
   // handle the change the country when clicking on the dropdown menu
   async function onCountryChange(event) {
     const countryCode = event.target.value;
@@ -131,9 +122,6 @@ function App() {
         }
       })
   }
-
-
-
 
 
   return (
