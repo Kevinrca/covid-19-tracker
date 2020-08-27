@@ -4,7 +4,6 @@ import numeral from "numeral";
 import "./Map.css";
 
 
-
 const casesTypeColors = {
     cases: {
       hex: "#CC1034",
@@ -35,7 +34,6 @@ function handlePosition(lat, long) {
         return [44.434659, -1.316971];
     }
 }
-
 
 
 
@@ -70,12 +68,8 @@ function showDataOnMap(data, casesType='cases') {
 
 
 
-
-
-
 function Map({ countries, casesType, center, zoom }) {
 
-    
     return (
         <div className="map">
             
